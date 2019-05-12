@@ -72,8 +72,8 @@ public class Mine{
 	
 	/*public static void learnRange(){
 		System.out.println("byte的取值范围是：");
-		System.out.println(Byte.MAX_VALUES);
-		System.out.println(Byte.MIN_VALUES);
+		System.out.println(Byte.MAX_VALUE);
+		System.out.println(Byte.MIN_VALUE);
 	}*/
 	
 	public static void learnStringAdd() {
