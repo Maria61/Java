@@ -13,12 +13,32 @@ public class Date{
 			System.out.println("月不合法："+month);
 			return;
 		}
+		if(day<1||day>getDayOfMonth(year,month)){
+			System.out.println("日不合法："+day);
+			return;
+		}
+		
+		this.year=year;
+		this.month=month;
+		this.day=day;
 		
 		
 	}
 	
 	public void add(int days){
-		
+		if(days<0){
+			System.out.println("日不合法："+days);
+			return;
+		}
+		day+=days;
+		while(day>getDayOfMonth){
+			day-=getDayOfMonth;
+			month++;
+			if(month>12){
+				month=1;
+				year++;
+			}
+		}
 	}
 	
 	public void sub(int days){
