@@ -64,7 +64,7 @@ public class Date{
 		day-=days;
 		while(day<1){
 			month--;
-			if(month<0){
+			if(month<1){
 				month=12;
 				year--;
 			}
@@ -75,6 +75,21 @@ public class Date{
 	//格式化打印日期
 	public String toString(){
 		return String.format("%04d-%02d-%02d",year,month,day);
+	}
+	//计算两日期相差多少天
+	public static int differ(Date d1,Date d2){
+		if(!isGreatDay(d1,d2)){
+			System.out.println("d1必须大于d2");
+			return -1;
+		}
+		Date temp=new Date(d1);
+		int days=0;
+		while(isGreatDay(temp,d2)){
+			temp.sub(1);
+			days++;
+			
+		}
+		return days;
 	}
 	
 	//计算每月的天数
@@ -93,15 +108,33 @@ public class Date{
 		}
 		return false;
 	}
+	//判断是否输入合法的日期
+	private static boolean isGreatDay(Date d1,Date d2){
+		if(d1.year>d2.year){
+			return true;
+		}
+		if(d1.year==d2.year&&d1.month>d2.month){
+			return true;
+		}
+		if(d1.year==d2.year&&d1.month==d2.month&&d1.day>d2.day){
+			return true;
+		}
+		return false;
+	}
 	
 	public static void main(String[] args){
 		Date d1=new Date(2019,05,23);
 		System.out.println(d1.toString());
-		d1.add(10);
+		//d1.add(10);
+		d1.add(365);
 		System.out.println(d1.toString());
-		d1.sub(3);
-		//d1.sub(200);//有问题
+		//d1.sub(3);
+		d1.sub(365);
 		System.out.println(d1.toString());
+		
+		Date today=new Date(2019,5,24);
+		Date intern=new Date(2021,6,1);
+		System.out.println(Date.differ(intern,today));
 		 
 	}
 }
