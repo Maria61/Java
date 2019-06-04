@@ -177,7 +177,7 @@ public class JavaDaily0604{
 		}
 		while(cur1!=null){
 			//System.out.println("cur1:"+cur1.val+"  cur2:"+cur2.val);
-			if(cur1.val==cur2.val){
+			if(cur1==cur2){
 				return cur1;
 			}else{
 				cur1=cur1.next;
@@ -191,8 +191,8 @@ public class JavaDaily0604{
 	
 	public static void main(String[] args){
 		ListNode head=new ListNode(1);
-		ListNode n2=new ListNode(1);
-		ListNode n3=new ListNode(5);
+		ListNode n2=new ListNode(2);
+		ListNode n3=new ListNode(8);
 		ListNode n4=new ListNode(30);
 		ListNode n5=new ListNode(40);
 		ListNode n6=new ListNode(60);
@@ -204,11 +204,8 @@ public class JavaDaily0604{
 		print(head);
 		ListNode head2=new ListNode(2);
 		ListNode m2=new ListNode(8);
-		ListNode m3=new ListNode(40);
-		ListNode m4=new ListNode(60);
 		head2.next=m2;
-		m2.next=m3;
-		m3.next=m4;
+		m2.next=n3;
 		print(head2);
 		
 		/*head=pushFront(head,0);
