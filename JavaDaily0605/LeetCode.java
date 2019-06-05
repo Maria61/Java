@@ -73,11 +73,17 @@ public class LeetCode{
         int len=0;
         ListNode cur=head;
         ListNode newList=null;
-        ListNode last=head;
-        ListNode last1=head;
-		
-        while(cur!=null){
+        ListNode last=head;//记录第m-1个结点
+        ListNode last1=head;//记录逆序前第m个结点
+		if(m==n){
+			return head;
+		}
+		if(m==1){
+				last1=cur;
+			}
+        while(cur!=null&&len<=n){
             len++;
+			
             if(len<m){
 				last=cur;
 				cur=cur.next;
@@ -88,12 +94,14 @@ public class LeetCode{
 				cur.next=newList;
 				newList=cur;
 				cur=next;
-			}
-			if(len>n){
-				last.next=newList;
-				break;
+				
 			}
         }
+		if(m!=1){
+			last.next=newList;
+		}else{
+			head=newList;
+		}
 		last1.next=cur;
         return head;
     }
@@ -114,7 +122,8 @@ public class LeetCode{
 		n2.next=n3;
 		n3.next=n4;
 		print(head);
-		ListNode head2=new ListNode(0);
+		
+		/*ListNode head2=new ListNode(0);
 		ListNode m2=new ListNode(2);
 		ListNode m3=new ListNode(3);
 		ListNode m4=new ListNode(4);
@@ -122,10 +131,14 @@ public class LeetCode{
 		m2.next=m3;
 		m3.next=m4;
 		print(head2);
-		head=mergeTwoLists(head,head2);
-		print(head);
+		*/
+		
+		//head=mergeTwoLists(head,head2);
+		//print(head);
+		
 		//System.out.println(middleNode(head).val);
-		head=reverseBetween(head,2,7);
+		
+		head=reverseBetween(head,2,4);
 		print(head);
 	}
 }
