@@ -30,10 +30,10 @@ public class LeetCode{
 		if(head==null||head.next==null){
 			return head;
 		}else{
-			ListNode newList=reverse2(head.next);//5	5-->4     5-->4-->3    5-->4-->3-->2
-			head.next.next=head;				//4		3	      2			   1
+			ListNode newList=reverse2(head.next);  		//5			5-->4     5-->4-->3    5-->4-->3-->2
+			head.next.next=head;				//4			3	      2		 1
 			head.next=null;
-			return newList;						//5-->4	5-->4-->3 5-->4-->3-->2 5-->4-->3-->2-->1
+			return newList;					//5-->4	5-->4-->3    5-->4-->3-->2       5-->4-->3-->2-->1
 		}
 		
 	}
