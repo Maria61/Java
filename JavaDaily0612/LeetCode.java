@@ -10,28 +10,28 @@ public class LeetCode{
 	给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
 	**/
 	public static ListNode detectCycle(ListNode head) {
-        if(head==null){
-            return null;
-        }
-        ListNode fast=head;
-        ListNode slow=head;
-        do{					//判断是否有环，快慢指针一个走两步，一个走一步，如果有环，一定可以遇到
-            fast=fast.next;
-            if(fast==null){
-                break;
-            }
-            slow=slow.next;
-            fast=fast.next;
-        }while(fast!=null&&fast!=slow);
-        if(fast==null){
-            return null;
-        }
-        ListNode p=head;
-        ListNode q=slow;
-        while(p!=q){	//公式：L=R-c+(m-1)R	//L指的是环入口前的路程，C指的是环内相遇的路程，R指的是环的周长
-            p=p.next;	//一个引用从首节点开始，一个引用从相遇点开始，共同移动，最终会在环入口相遇
-            q=q.next;
-        }
+		if(head==null){
+		    return null;
+		}
+		ListNode fast=head;
+		ListNode slow=head;
+		do{					//判断是否有环，快慢指针一个走两步，一个走一步，如果有环，一定可以遇到
+		    fast=fast.next;
+		    if(fast==null){
+			break;
+		    }
+		    slow=slow.next;
+		    fast=fast.next;
+		}while(fast!=null&&fast!=slow);
+		if(fast==null){
+		    return null;
+		}
+		ListNode p=head;
+		ListNode q=slow;
+		while(p!=q){	//公式：L=R-c+(m-1)R	//L指的是环入口前的路程，C指的是环内相遇的路程，R指的是环的周长
+		    p=p.next;	//一个引用从首节点开始，一个引用从相遇点开始，共同移动，最终会在环入口相遇
+		    q=q.next;
+		}
         return p;
     }
 	/**问题描述：给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
