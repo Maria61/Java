@@ -113,6 +113,26 @@ public class LeetCode{
 		
 		return newList;
 	}
+	//删除所有值为val的结点
+	public static ListNode deleteRepeatVal(ListNode head,int val){
+		ListNode cur=head;
+		ListNode newList=null;
+		ListNode last=null;
+		while(cur!=null){
+			ListNode next=cur.next;
+			if(cur.val!=val){
+				if(newList==null){
+					cur.next=newList;
+					newList=cur;
+				}else{
+					last.next=cur;
+				}
+				last=cur;
+			}
+			cur=next;
+		}
+		return newList;
+	}
 	public static void main(String[] args){
 		ListNode head=new ListNode(1);
 		ListNode n2=new ListNode(1);
@@ -139,6 +159,8 @@ public class LeetCode{
 		//head=deleteRepeatNode(head);
 		//print(head);
 		head=mergerOrderList(head,head2);
+		print(head);
+		head=deleteRepeatVal(head,3);
 		print(head);
 	}
 }
