@@ -30,6 +30,7 @@ public class LeetCode{
 		}
 		return newList;
 	}
+	//复制复杂链表
 	public static ListNode copyRandomList(ListNode head){
 		if(head==null){
 			return null;
