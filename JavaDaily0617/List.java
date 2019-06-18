@@ -55,6 +55,13 @@ class LinkedList{
 		}else if(head.next==null){
 			head=null;
 			size=0;
+		}else{
+			Node cur=head;
+			while(cur.next.next!=null){
+				cur=cur.next;
+			}
+			cur.next=null;
+			size--;
 		}
 	}
 	
