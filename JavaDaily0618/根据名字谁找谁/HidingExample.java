@@ -17,9 +17,9 @@ class B extends A{
 	}
 	
 	public void method(){
-		System.out.println(field);
-		System.out.println(this.field);
-		System.out.println(super.field);
+		System.out.println(field);//100
+		System.out.println(this.field);//100
+		System.out.println(super.field);//1
 	}
 }
 
@@ -27,13 +27,13 @@ public class HidingExample{
 	public static void main(String[] args){
 		B object=new B();
 		
-		System.out.println(object.field);
-		System.out.println(object.staticField);
-		System.out.println(B.staticField);
-		B.staticMethod();
+		System.out.println(object.field);	//100
+		System.out.println(object.staticField);//200	不建议用对象调用静态属性
+		System.out.println(B.staticField);//200
+		B.staticMethod();//“子类的静态属性”
 		
-		System.out.println(A.staticField);
-		A.staticMethod();
+		System.out.println(A.staticField);//2
+		A.staticMethod();//“父类的静态属性”
 		
 	}
 }
