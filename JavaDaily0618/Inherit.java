@@ -1,8 +1,18 @@
+
+//继承：父类的属性在子类中可以使用
+//但如果子类与父类有同名属性/方法（参数列表也相同），在子类中优先子类的属性和列表
+
+/*在子类中，有属性size ,普通方法中，有形参size,父类中有属性size,此时：
+size表示形参/局部变量
+this.size表示子类属性
+super.size表示父类属性
+*/
+
 import java.util.Arrays;
 class List{		//父类：线性表
 	protected int size;	//protected 子类有权限访问，其他类没有
 	
-	public int getSize(){
+	public int getSize(){//在子类中如果有同名同样参数列表的方法，用 super. 调用
 		return size;
 	}
 }
@@ -24,11 +34,16 @@ class ArrayList extends List{
 	public ArrayList(int len){
 		array=new int[len];
 	}
+	
+	public int getSize(){
+		return size;
+	}
 	//用于查看访问权限
 	public void setSize(int size){
 		size=66;		//形参/局部变量
-		this.size=66;	//本身属性
-		super.size=66;	//父类属性
+		this.size=36;	//本身属性
+		super.size=10;	//父类属性
+		System.out.println(getSize());//子类方法   打印36
 	}
 	//尾插
 	public void pushBack(int val){
@@ -43,6 +58,9 @@ class ArrayList extends List{
 		}
 		array[0]=val;
 		size++;
+		//System.out.println(super.getSize());	//打印结果为0,因为该方法改变的是子类中的size，而父类中的size并没有改变
+		//System.out.println(getSize());	//子类方法
+		
 	}
 	//尾删
 	public void popBack(){
@@ -143,7 +161,7 @@ class LinkedList extends List{
 }
 public class Inherit{
 	public static void main(String[] args){
-		/*ArrayList arrayList=new ArrayList(10);
+		ArrayList arrayList=new ArrayList(10);
 		arrayList.pushBack(1);
 		arrayList.pushBack(2);
 		arrayList.pushBack(3);
@@ -152,13 +170,22 @@ public class Inherit{
 		arrayList.popBack();
 		arrayList.popFront();
 		System.out.println(arrayList.print());
-		*/
-		LinkedList.linkedList=new LinkedList();
+		System.out.println(arrayList.getSize());//优先子类的方法/属性，其次是父类
+		arrayList.setSize(33);	
+		
+		
+		//*/
+		/*LinkedList linkedList=new LinkedList();
 		linkedList.pushBack(1);
 		linkedList.pushBack(2);
 		linkedList.pushBack(3);
 		linkedList.pushFront(3);
 		linkedList.print();
+		linkedList.popBack();
+		linkedList.popFront();
+		linkedList.print();
+		*/
+		
 		
 	}
 }
