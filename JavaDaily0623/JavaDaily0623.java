@@ -1,3 +1,4 @@
+//抽象类
 abstract class List{
 	private int size;
 	
@@ -8,7 +9,7 @@ abstract class List{
 	public void pushFront(int val){
 		insert(0,val);
 	}
-	
+	//抽象方法：只写方法签名，不写方法实现，方法实现在子类里具体实现
 	public abstract void insert(int index,int val);
 	
 	protected void incSize(){
@@ -33,8 +34,8 @@ class Node{
 }
 class Linkedlist extends List{
 	private Node head;
-	
-	@Override
+	//重写
+	@Override	//注解，编译时这句会帮助检查重写格式是否正确
 	public void insert(int index,int val){
 		Node cur=head;
 		if(index==0){
