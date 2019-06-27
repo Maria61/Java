@@ -58,7 +58,7 @@ abstract class List{
 }
 
 class ArrayList extends List{
-	int[] array=new int[10];
+	int[] array=new int[5];
 	
 	@Override
 	public void insertInternal(int index,int val){
@@ -96,6 +96,62 @@ class ArrayList extends List{
 	}
 }
 
+class Node{
+	int val;
+	Node next;
+	
+	Node(int val){
+		this.val=val;
+	}
+	
+	Node(int val,Node next){
+		this.val=val;
+		this.next=next;
+	}
+}
+//链表
+class LinkedList extends List{
+	private Node head;
+	
+	@Override
+	public void insertInternal(int index,int val){
+		if(index==0){
+			head=new Node(val,head);
+		}else{
+			Node cur=head;
+			for(int i=0;i<index-1;i++){
+				cur=cur.next;
+			}
+			cur.next=new Node(val,cur.next);
+		}
+		increaseSize();
+	}
+	@Override
+	public void delectInternal(int index){
+		if(index==0){
+			head=head.next;
+		}else{
+			Node cur=head;
+			for(int i=0;i<index-1;i++){
+				cur=cur.next;
+			}
+			cur.next=cur.next.next;
+		}
+		decreaseSize();
+	}
+	
+	@Override
+	public void display(){
+		Node cur=head;
+		while(cur!=null){
+			System.out.printf("%d-->",cur.val);
+			cur=cur.next;
+		}
+		System.out.println("null");
+	}
+	
+}
+
 public class JavaDaily0626{
 	public static void testList(List list){
 		list.pushBack(1);
@@ -112,6 +168,7 @@ public class JavaDaily0626{
 	}
 	public static void main(String[] args){
 		testList(new ArrayList());
+		testList(new LinkedList());
 		//List list=new List();//错误用法，抽象类无法实例化
 		//List list=new ArrayList();// 多态的用法，向下转型
 	}
