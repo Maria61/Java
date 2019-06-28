@@ -244,7 +244,7 @@ class LinkedList extends AbstractList implements List,RandomAccess{
 		
 		@Override
 		public boolean hasNext(){
-			return cur.next!=null;
+			return cur!=null;
 		}
 		
 		@Override
@@ -287,18 +287,19 @@ public class ListByInterface{
 		
 		list.set(1,10);
 		list.display();
-		System.out.println(list.get(2));
+		//System.out.println(list.get(2));
 		
 		Iterator it1=list.iterator();
 		Iterator it2=list.iterator();
-		/*System.out.println(it1.next());
+		System.out.println(it1.next());
 		while(it1.hasNext()){
-			System.out.println(it1.next());
+			System.out.printf("%d,",it1.next());
 		}
-		
+		System.out.println();
 		while(it2.hasNext()){
-			System.out.println(it2.next());
-		}*/
+			System.out.printf("%d,",it2.next());
+		}
+		System.out.println();
 	}
 	public static void main(String[] args){
 		testList(new ArrayList());
