@@ -15,7 +15,7 @@ interface List{
 	//打印
 	void display();		//不在抽象类里实现，在抽象类的子类实现
 	//统一遍历方式
-	Iterator iterator();	//？
+	Iterator iterator();	//Iterator 类型？
 	//删除
 	void popFront();
 	void popBack();
@@ -149,7 +149,7 @@ class ArrayList extends AbstractList implements List,RandomAccess{
 		System.out.println();
 	}
 	
-	private void ensureCapacity(){
+	private void ensureCapacity(){	//扩容
 		if(getSize()<array.length){
 			return;
 		}
@@ -163,7 +163,7 @@ class ArrayList extends AbstractList implements List,RandomAccess{
 		}
 		decreaseSize();
 	}
-	
+	@Override
 	public int get(int index){
 		if(index<0||index>=getSize()){
 			System.out.println("下标错误");
@@ -171,7 +171,7 @@ class ArrayList extends AbstractList implements List,RandomAccess{
 		}
 		return array[index];
 	}
-	
+	@Override
 	public void set(int index,int val){
 		if(index<0||index>=getSize()){
 			System.out.println("下标错误");
