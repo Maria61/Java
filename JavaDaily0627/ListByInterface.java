@@ -15,7 +15,7 @@ interface List{
 	//打印
 	void display();		//不在抽象类里实现，在抽象类的子类实现
 	//统一遍历方式
-	Iterator iterator();	//Iterator 类型？
+	Iterator iterator();	//Iterator 类型，数据类型有 类类型 和 接口类型
 	//删除
 	void popFront();
 	void popBack();
