@@ -40,6 +40,7 @@ abstract class AbstractList implements List{
 	public void pushFront(int val){
 		insertInternal(0,val);
 	}
+	
 	@Override
 	public void insert(int index,int val){
 		if(index<0||index>size){
