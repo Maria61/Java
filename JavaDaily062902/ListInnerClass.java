@@ -168,15 +168,26 @@ class LinkedList extends AbstractList implements List,RandomAccess{
 		if(index==0){
 			head=Node(val,head);
 		}else{
-			
+			Node cur=head;
+			for(int i=0;i<index-1;i++){
+				cur=cur.next;
+			}
+			cur.next=Node(val,cur.next);
 		}
 		increaseSize();
 	}
 	@Override
 	public void eraseInternal(int index){
-		for(int i=index;i<getSize()-1;i++){
-			array[i]=array[i+1];
+		if(index==0){
+			head=head.next;
+		}else{
+			Node cur=head;
+			for(int i=0;i<index-1;i++){
+				cur=cur.next;
+			}
+			cur.next=cur.next.next;
 		}
+		
 		decreaseSize();
 	}
 	
@@ -186,7 +197,11 @@ class LinkedList extends AbstractList implements List,RandomAccess{
 			System.out.println("下标错误");
 			return -1;
 		}
-		return array[index];
+		Node cur=head;
+		for(int i=0;i<index;i++){
+			cur=cur.next;
+		}
+		return cur.val;
 	}
 	@Override
 	public void set(int index,int val){
@@ -194,11 +209,15 @@ class LinkedList extends AbstractList implements List,RandomAccess{
 			System.out.println("下标错误");
 			return;
 		}
-		array[index]=val;
+		Node cur=head;
+		for(int i=0;i<index;i++){
+			cur=cur.next;
+		}
+		cur.val=val;
 	}
 	@Override 
 	public Iterator iterator(){
-		return new ArrayListIterator();
+		return new LinkedListIterator();
 	}
 	
 }
