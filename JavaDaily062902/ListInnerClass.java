@@ -134,6 +134,74 @@ class ArrayList extends AbstractList implements List,RandomAccess{
 		return new ArrayListIterator();
 	}
 }
+class LinkedList extends AbstractList implements List,RandomAccess{
+	private class Node{
+		private int val;
+		private Node next;
+		
+		Node(int val,Node next){
+			this.val=val;
+			this.next=next;
+		}
+		
+		Node(int val){
+			this(val,null);
+		}
+	}
+	private class LinkedListIterator implements Iterator{
+		private Node cur=head;
+		
+		@Override
+		public boolean hasNext(){
+			return cur!=null;
+		}
+		@Override
+		public int next(){
+			int val=cur.val;
+			cur=cur.next;
+			return val;
+		}
+	}
+	
+	@Override
+	public void insertInternal(int index,int val){
+		if(index==0){
+			head=Node(val,head);
+		}else{
+			
+		}
+		increaseSize();
+	}
+	@Override
+	public void eraseInternal(int index){
+		for(int i=index;i<getSize()-1;i++){
+			array[i]=array[i+1];
+		}
+		decreaseSize();
+	}
+	
+	@Override
+	public int get(int index){
+		if(index<0||index>getSize()-1){
+			System.out.println("下标错误");
+			return -1;
+		}
+		return array[index];
+	}
+	@Override
+	public void set(int index,int val){
+		if(index<0||index>getSize()-1){
+			System.out.println("下标错误");
+			return;
+		}
+		array[index]=val;
+	}
+	@Override 
+	public Iterator iterator(){
+		return new ArrayListIterator();
+	}
+	
+}
 public class ListInnerClass{
 	public static void testList(List list){
 		list.pushBack(1);
