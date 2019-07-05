@@ -222,7 +222,7 @@ class LinkedList extends AbstractList implements List,RandomAccess{
 	
 }
 public class ListInnerClass{
-	public static void testList(List list){
+	public static void testList(List list){//接口和抽象类可以创建引用不可以创建对象，该引用可以指向子类的对象，多态
 		list.pushBack(1);
 		list.pushFront(3);
 		list.pushBack(4);
