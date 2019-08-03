@@ -26,7 +26,7 @@ public class Inherit{
 		B b=new B();
 		System.out.println(b.a);//30
 		System.out.println(b.b);//30
-		b.method(5);//20,10
+		b.method(5);//20,10,子类对象调用父类方法
 		B.staticMethod();//子类的静态方法
 		A.staticMethod();//父类的静态方法
 		
