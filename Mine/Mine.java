@@ -1,7 +1,7 @@
 public class Mine{
 	
 	public static void learnIdentifier(){
-	    int a=100;
+		int a=100;
 		int A=200;//大写与小写是两个各自变量，没有影响
 		int d=03;
 		long b=100L;
